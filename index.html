@@ -1,0 +1,65 @@
+from pathlib import Path
+
+facts = [
+"Nintendo was founded in 1889 as a playing-card company.",
+"Mario was originally called Jumpman.",
+"The first PlayStation was released in Japan in 1994.",
+"Sonic the Hedgehog first appeared in 1991.",
+"The original Doom was released in 1993.",
+"Mortal Kombat debuted in arcades in 1992.",
+"The Sims was released in 2000.",
+"Minecraft was first publicly released in 2009.",
+"Pac-Man was originally called Puck Man in Japan.",
+"The first Star Wars movie was released in 1977.",
+"Darth Vader was voiced by James Earl Jones.",
+"Jurassic Park was released in 1993.",
+"The Matrix was released in 1999.",
+"Toy Story was released in 1995.",
+"Titanic was released in 1997.",
+"Friends premiered in 1994.",
+"The Fresh Prince of Bel-Air premiered in 1990.",
+"The X-Files premiered in 1993.",
+"Batman first appeared in 1939.",
+"Superman first appeared in 1938.",
+"Spider-Man first appeared in 1962.",
+"Wonder Woman debuted in 1941.",
+"The Avengers debuted in 1963.",
+"The X-Men debuted in 1963.",
+"Iron Man debuted in 1963.",
+"The Hulk debuted in 1962.",
+"Black Panther first appeared in 1966.",
+"Deadpool first appeared in 1991.",
+"Nirvana released Nevermind in 1991.",
+"Britney Spears released ...Baby One More Time in 1998.",
+"The Spice Girls formed in 1994.",
+"The Backstreet Boys formed in 1993.",
+"The first MTV broadcast aired in 1981.",
+"Michael Jackson's Thriller video premiered in 1983.",
+"Queen performed at Live Aid in 1985.",
+"The Lion King was released in 1994.",
+"Aladdin was released in 1992.",
+"Shrek was released in 2001.",
+"The first modern Olympic Games were held in Athens in 1896."
+]
+
+html = """<!DOCTYPE html>
+<html>
+<head>
+  <title>Melbz Trivia</title>
+</head>
+<body>
+<script>
+const facts = [
+""" + ",\n".join('  "' + f.replace('"', '\\"') + '"' for f in facts) + """
+];
+
+const randomFact = facts[Math.floor(Math.random() * facts.length)];
+document.body.innerText = randomFact;
+</script>
+</body>
+</html>
+"""
+
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created {path} with {len(facts)} trivia facts.")
